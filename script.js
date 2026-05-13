@@ -1,61 +1,50 @@
-:root {
-    --primary: #2563eb;
-    --ai-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    --canva-teal: #00c4cc;
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --text: #1e293b;
+const GEMINI_KEY = "AIzaSyBEE8IoqwesQ-NemSFhWTfp2lwMRfgZhFY";
+const CANVA_KEY = "cnvcaR3gYxLB4tS3tUc_OaOAx8yGjbVyEkLbIZgG5KoV2bR8f8ce4ca7";
+
+// Update Preview in Real-time
+function updatePreview() {
+    document.getElementById('res-name').innerText = document.getElementById('fullName').value || "Your Name";
+    const contact = `${document.getElementById('email').value} | ${document.getElementById('phone').value} | ${document.getElementById('location').value}`;
+    document.getElementById('res-contact').innerText = contact;
+    
+    const exp = document.getElementById('experience').value;
+    document.getElementById('res-body').innerHTML = exp.replace(/\n/g, '<br>');
 }
 
-.dark-mode {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --text: #f1f5f9;
-}
+// Attach listeners
+['fullName', 'email', 'phone', 'location', 'experience'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updatePreview);
+});
 
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
-.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+// AI Enhancement
+document.getElementById('ai-enhance-btn').addEventListener('click', async () => {
+    const text = document.getElementById('experience').value;
+    const market = document.getElementById('market-type').value;
+    if(!text) return alert("Enter experience first!");
 
-.builder-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: start; }
+    const btn = document.getElementById('ai-enhance-btn');
+    btn.innerText = "🪄 AI Polishing...";
 
-@media (max-width: 900px) { .builder-grid { grid-template-columns: 1fr; } }
+    try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: `Rewrite this resume experience for the ${market} market. Use bullet points and professional action verbs: ${text}` }]}]
+            })
+        });
+        const data = await res.json();
+        document.getElementById('experience').value = data.candidates[0].content.parts[0].text;
+        updatePreview();
+    } catch (e) { alert("AI Error. Check connection."); }
+    btn.innerText = "✨ AI Optimize Content";
+});
 
-.card { background: var(--card); padding: 25px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-
-/* AI Button styling */
-.btn-ai {
-    background: var(--ai-gradient);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.btn-canva {
-    background: var(--canva-teal);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    flex: 1;
-}
-
-.resume-paper {
-    background: white;
-    color: #333;
-    padding: 40px;
-    min-height: 500px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    font-size: 0.9rem;
-}
-
-.resume-divider { height: 2px; background: #eee; margin: 15px 0; }
-.action-bar { display: flex; gap: 10px; margin-top: 20px; }
-.btn-primary { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; flex: 1; cursor: pointer; }
+// Canva Initializer
+document.getElementById('canva-btn').addEventListener('click', () => {
+    Canva.DesignButton.initialize({
+        apiKey: CANVA_KEY,
+        type: "Resume",
+        onDesignPublish: (url) => window.open(url, '_blank')
+    });
+});
