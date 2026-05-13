@@ -1,244 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ResumeAI Pro - Free AI Resume Builder</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    background:#f4f7fb;
-    color:#222;
-}
-
-header{
-    background:#0f172a;
-    color:white;
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-header h1{
-    font-size:28px;
-}
-
-.hero{
-    text-align:center;
-    padding:60px 20px;
-}
-
-.hero h2{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:18px;
-    color:#555;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.form-box,
-.resume-box{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.form-box h3,
-.resume-box h3{
-    margin-bottom:20px;
-    font-size:24px;
-}
-
-input,
-textarea{
-    width:100%;
-    padding:14px;
-    margin-bottom:15px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    font-size:15px;
-}
-
-textarea{
-    resize:none;
-    height:120px;
-}
-
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:14px 20px;
-    border-radius:10px;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#1e40af;
-}
-
-.resume-preview{
-    border:1px solid #ddd;
-    padding:25px;
-    border-radius:10px;
-    background:#fff;
-}
-
-.resume-preview h1{
-    color:#2563eb;
-    margin-bottom:10px;
-}
-
-.resume-preview h2{
-    margin-top:20px;
-    font-size:20px;
-    border-bottom:2px solid #2563eb;
-    padding-bottom:5px;
-}
-
-.download-btn{
-    margin-top:20px;
-    width:100%;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    margin-top:50px;
-    background:#0f172a;
-    color:white;
-}
-
-@media(max-width:900px){
-    .container{
-        grid-template-columns:1fr;
-    }
-
-    .hero h2{
-        font-size:30px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemoteHire AI | Modern Remote Jobs & AI Resume Builder</title>
+    <meta name="description" content="Find premium remote jobs in USA, UK, Canada, and Australia. Build ATS-friendly resumes with AI.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <h1>ResumeAI Pro</h1>
-    <p>Free AI Resume Builder</p>
-</header>
+    <!-- Sticky Header -->
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">RemoteHire<span>AI</span></div>
+            <ul class="nav-links">
+                <li><a href="#jobs">Find Jobs</a></li>
+                <li><a href="#builder">AI Resume</a></li>
+                <li><a href="#blog">Resources</a></li>
+                <li><a href="#pricing" class="btn-secondary">Premium</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
 
-<section class="hero">
-    <h2>Create Professional AI Resumes in Seconds</h2>
-    <p>Build ATS-friendly resumes for USA & Australia jobs.</p>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Trusted by 50k+ Remote Workers</span>
+                <h1>Land Your Dream Remote Job in the <span class="gradient-text">USA, UK, or Canada</span></h1>
+                <p>AI-powered job matching and ATS-optimized resume building. Get hired 3x faster with RemoteHire AI.</p>
+                <div class="hero-btns">
+                    <a href="#jobs" class="btn-primary">Browse Jobs</a>
+                    <a href="#builder" class="btn-outline">Build AI Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="container">
-
-    <!-- FORM -->
-    <div class="form-box">
-        <h3>Enter Your Details</h3>
-
-        <input type="text" id="name" placeholder="Full Name">
-
-        <input type="text" id="job" placeholder="Job Title">
-
-        <textarea id="skills" placeholder="Skills (Example: HTML, CSS, Trading, Marketing)"></textarea>
-
-        <textarea id="experience" placeholder="Work Experience"></textarea>
-
-        <textarea id="education" placeholder="Education"></textarea>
-
-        <button onclick="generateResume()">Generate Resume</button>
+    <!-- AdSense Placeholder -->
+    <div class="ad-section container">
+        <div class="ad-placeholder">Top Leaderboard Ad - Place AdSense Code Here</div>
     </div>
 
-    <!-- RESUME -->
-    <div class="resume-box">
-        <h3>Resume Preview</h3>
-
-        <div class="resume-preview" id="resumeOutput">
-
-            <h1>Your Name</h1>
-
-            <p>Your professional summary will appear here.</p>
-
+    <!-- Job Search Section -->
+    <section id="jobs" class="jobs-section container">
+        <div class="section-header">
+            <h2>Remote Opportunities</h2>
+            <div class="search-bar">
+                <input type="text" id="jobSearch" placeholder="Search titles or skills...">
+                <select id="countryFilter">
+                    <option value="all">All Countries</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                </select>
+            </div>
         </div>
 
-        <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
-    </div>
+        <div class="job-grid" id="jobGrid">
+            <!-- Jobs will be injected by JavaScript -->
+        </div>
+    </section>
 
-</div>
+    <!-- AI Resume Builder Section -->
+    <section id="builder" class="resume-builder">
+        <div class="container">
+            <div class="builder-card">
+                <div class="builder-info">
+                    <h2>AI Resume Generator</h2>
+                    <p>Enter your details and our AI will format a high-converting ATS resume.</p>
+                    <form id="resumeForm">
+                        <input type="text" id="resName" placeholder="Full Name" required>
+                        <input type="text" id="resRole" placeholder="Target Job Title" required>
+                        <textarea id="resSummary" placeholder="Professional Summary"></textarea>
+                        <textarea id="resExp" placeholder="Work Experience (Project, Date, Description)"></textarea>
+                        <button type="button" onclick="generateResume()" class="btn-primary">Generate PDF</button>
+                    </form>
+                </div>
+                <div class="preview-panel" id="resumePreview">
+                    <div id="pdfContent">
+                        <h3 id="prevName">Your Name</h3>
+                        <p id="prevRole">Professional Title</p>
+                        <hr>
+                        <div id="prevSummary">Summary will appear here...</div>
+                        <div id="prevExp">Experience details...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    © 2026 ResumeAI Pro - All Rights Reserved
-</footer>
+    <!-- Newsletter & Lead Gen -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Get Jobs in Your Inbox</h3>
+            <p>Join 10,000+ subscribers for weekly remote job alerts.</p>
+            <form id="leadGen">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
-<!-- PDF Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">RemoteHire<span>AI</span></div>
+                    <p>Building the future of remote work.</p>
+                </div>
+                <div>
+                    <h4>Pages</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#blog">Blog</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>support@remotehireai.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<script>
-function generateResume(){
-
-    let name = document.getElementById('name').value;
-    let job = document.getElementById('job').value;
-    let skills = document.getElementById('skills').value;
-    let experience = document.getElementById('experience').value;
-    let education = document.getElementById('education').value;
-
-    let summary = `
-        Highly motivated ${job} with strong experience in ${skills}.
-        Passionate about delivering professional results and contributing
-        to company growth with dedication and innovation.
-    `;
-
-    document.getElementById('resumeOutput').innerHTML = `
-        <h1>${name}</h1>
-        <p><strong>${job}</strong></p>
-
-        <h2>Professional Summary</h2>
-        <p>${summary}</p>
-
-        <h2>Skills</h2>
-        <p>${skills}</p>
-
-        <h2>Experience</h2>
-        <p>${experience}</p>
-
-        <h2>Education</h2>
-        <p>${education}</p>
-    `;
-}
-
-function downloadPDF(){
-
-    const element = document.getElementById('resumeOutput');
-
-    html2pdf().from(element).save('resume.pdf');
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
