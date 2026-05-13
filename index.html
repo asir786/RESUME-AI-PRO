@@ -3,133 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RemoteHire AI | Modern Remote Jobs & AI Resume Builder</title>
-    <meta name="description" content="Find premium remote jobs in USA, UK, Canada, and Australia. Build ATS-friendly resumes with AI.">
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
+    <meta name="description" content="ResumeAIHub - AI-powered resume builder for US and Australian job markets. Professional, ATS-friendly, and free.">
+    <title>ResumeAIHub | AI Resume & Canva Designer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="light-mode">
 
-    <!-- Sticky Header -->
-    <header class="main-header">
-        <nav class="container">
-            <div class="logo">RemoteHire<span>AI</span></div>
-            <ul class="nav-links">
-                <li><a href="#jobs">Find Jobs</a></li>
-                <li><a href="#builder">AI Resume</a></li>
-                <li><a href="#blog">Resources</a></li>
-                <li><a href="#pricing" class="btn-secondary">Premium</a></li>
-            </ul>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        </nav>
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <a href="#" class="logo">Resume<span>AI</span>Hub</a>
+            <div class="nav-right">
+                <button id="theme-toggle" class="btn-icon">🌓</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Create Your <span class="text-blue">AI-Optimized</span> Resume</h1>
+            <p>Targeting top companies in the **USA** and **Australia**. Powered by Gemini AI.</p>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="badge">Trusted by 50k+ Remote Workers</span>
-                <h1>Land Your Dream Remote Job in the <span class="gradient-text">USA, UK, or Canada</span></h1>
-                <p>AI-powered job matching and ATS-optimized resume building. Get hired 3x faster with RemoteHire AI.</p>
-                <div class="hero-btns">
-                    <a href="#jobs" class="btn-primary">Browse Jobs</a>
-                    <a href="#builder" class="btn-outline">Build AI Resume</a>
-                </div>
+    <main class="container builder-grid">
+        <!-- Input Section -->
+        <section class="card form-section">
+            <div class="section-header">
+                <h3>1. Personal Info</h3>
             </div>
-        </div>
-    </section>
+            <div class="input-group">
+                <input type="text" id="fullName" placeholder="Full Name (e.g., Asir Developer)">
+                <input type="email" id="email" placeholder="Email Address">
+                <input type="text" id="phone" placeholder="Phone (e.g., +1 or +61)">
+                <input type="text" id="location" placeholder="City, Country">
+            </div>
 
-    <!-- AdSense Placeholder -->
-    <div class="ad-section container">
-        <div class="ad-placeholder">Top Leaderboard Ad - Place AdSense Code Here</div>
-    </div>
-
-    <!-- Job Search Section -->
-    <section id="jobs" class="jobs-section container">
-        <div class="section-header">
-            <h2>Remote Opportunities</h2>
-            <div class="search-bar">
-                <input type="text" id="jobSearch" placeholder="Search titles or skills...">
-                <select id="countryFilter">
-                    <option value="all">All Countries</option>
-                    <option value="usa">USA</option>
-                    <option value="uk">UK</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia</option>
+            <div class="section-header">
+                <h3>2. Professional Experience</h3>
+                <button id="ai-enhance-btn" class="btn-ai">✨ AI Optimize Content</button>
+            </div>
+            <textarea id="experience" rows="8" placeholder="Paste your raw experience here. Our AI will fix the grammar and add powerful action verbs for ATS systems."></textarea>
+            
+            <div class="market-selector">
+                <label>Target Market:</label>
+                <select id="market-type">
+                    <option value="US">🇺🇸 USA (Standard ATS)</option>
+                    <option value="AU">🇦🇺 Australia (Selection Criteria Focus)</option>
                 </select>
             </div>
-        </div>
+        </section>
 
-        <div class="job-grid" id="jobGrid">
-            <!-- Jobs will be injected by JavaScript -->
-        </div>
-    </section>
-
-    <!-- AI Resume Builder Section -->
-    <section id="builder" class="resume-builder">
-        <div class="container">
-            <div class="builder-card">
-                <div class="builder-info">
-                    <h2>AI Resume Generator</h2>
-                    <p>Enter your details and our AI will format a high-converting ATS resume.</p>
-                    <form id="resumeForm">
-                        <input type="text" id="resName" placeholder="Full Name" required>
-                        <input type="text" id="resRole" placeholder="Target Job Title" required>
-                        <textarea id="resSummary" placeholder="Professional Summary"></textarea>
-                        <textarea id="resExp" placeholder="Work Experience (Project, Date, Description)"></textarea>
-                        <button type="button" onclick="generateResume()" class="btn-primary">Generate PDF</button>
-                    </form>
-                </div>
-                <div class="preview-panel" id="resumePreview">
-                    <div id="pdfContent">
-                        <h3 id="prevName">Your Name</h3>
-                        <p id="prevRole">Professional Title</p>
-                        <hr>
-                        <div id="prevSummary">Summary will appear here...</div>
-                        <div id="prevExp">Experience details...</div>
-                    </div>
+        <!-- Preview & Design Section -->
+        <section class="preview-sticky">
+            <div id="resume-render" class="resume-paper">
+                <h2 id="res-name" class="text-center">Your Name</h2>
+                <p id="res-contact" class="text-center small-text">Contact Details</p>
+                <div class="resume-divider"></div>
+                <div id="res-body">
+                    Your professional journey will appear here...
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Newsletter & Lead Gen -->
-    <section class="newsletter">
-        <div class="container">
-            <h3>Get Jobs in Your Inbox</h3>
-            <p>Join 10,000+ subscribers for weekly remote job alerts.</p>
-            <form id="leadGen">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn-primary">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo">RemoteHire<span>AI</span></div>
-                    <p>Building the future of remote work.</p>
-                </div>
-                <div>
-                    <h4>Pages</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#blog">Blog</a>
-                </div>
-                <div>
-                    <h4>Contact</h4>
-                    <p>support@remotehireai.com</p>
-                </div>
+            <div class="action-bar">
+                <button onclick="downloadPDF()" class="btn-primary">Download PDF</button>
+                <button id="canva-btn" class="btn-canva">🎨 Open in Canva</button>
             </div>
-        </div>
-    </footer>
+            <p class="helper-text">Happy with the content? Use the Canva button to pick a premium template!</p>
+        </section>
+    </main>
 
+    <!-- Canva SDK -->
+    <script src="https://sdk.canva.com/designbutton/v2/api.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
