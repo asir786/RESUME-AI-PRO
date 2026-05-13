@@ -107,5 +107,20 @@ textarea { height: 250px; resize: none; }
     border: 1px solid #eee;
 }
 
-.resume-header { text-align: center; border-bottom: 2px solid var(--primary-blue); margin-bottom: 20px; padding-bottom: 10px; }
+@media print {
+    /* Hide everything except the resume sheet */
+    body * { visibility: hidden; }
+    #resume-render, #resume-render * { visibility: visible; }
+    #resume-render {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+    .navbar, .editor-panel, .action-group, .hero-section, .promo-text, .theme-btn {
+        display: none !important;
+    }
+}.resume-header { text-align: center; border-bottom: 2px solid var(--primary-blue); margin-bottom: 20px; padding-bottom: 10px; }
 .contact-line { font-size: 13px; color: #64748b; }
