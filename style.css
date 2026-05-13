@@ -1,0 +1,111 @@
+:root {
+    --primary-blue: #2563eb;
+    --dark-blue: #1e40af;
+    --bg-gray: #f8fafc;
+    --card-white: #ffffff;
+    --text-main: #1e293b;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-gray);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+.navbar {
+    background: var(--card-white);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-blue); }
+.logo span { color: var(--text-main); }
+
+/* Hero */
+.hero-section { text-align: center; padding: 40px 0; background: #fff; }
+.gradient-text {
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 992px) {
+    .main-layout { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+    background: var(--card-white);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.input-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.grid-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+textarea { height: 250px; resize: none; }
+
+/* Buttons */
+.ai-pill-btn {
+    background: #f1f5f9;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    flex: 1;
+}
+
+.btn-primary { background: var(--primary-blue); color: white; }
+.btn-canva { background: #00c4cc; color: white; }
+.action-group { display: flex; gap: 15px; margin-top: 20px; }
+
+/* Resume Sheet */
+.resume-sheet {
+    background: white;
+    min-height: 600px;
+    padding: 50px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.resume-header { text-align: center; border-bottom: 2px solid var(--primary-blue); margin-bottom: 20px; padding-bottom: 10px; }
+.contact-line { font-size: 13px; color: #64748b; }
